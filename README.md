@@ -17,8 +17,19 @@ RHI), quindi sono fluidi e leggeri.
 | **Fractal flame** | Filamenti luminosi stile *apophysis* generati da una mappa IFS iterata, con bloom. |
 | **Immagine SVG** | Carica un tuo file `.svg`/`.svgz` e lo renderizza come sfondo (PreserveAspectCrop). |
 
-Per ogni frattale puoi regolare **palette colori** (5 preset), **velocità** e **zoom**
-dalle impostazioni dello sfondo.
+Per ogni frattale puoi regolare **palette colori** (5 preset), **velocità**, **zoom** e
+**qualità** dalle impostazioni dello sfondo.
+
+## Performance
+
+- **Qualità (scala di rendering interna)**: i frattali vengono renderizzati in un FBO a
+  risoluzione ridotta (`layer.textureSize`) e poi riscalati con filtro bilineare. A
+  *Media (75%)* il numero di invocazioni del fragment shader cala a ~56%, a *Bassa (50%)*
+  a ~25% — su display 4K la differenza di carico GPU è enorme, con impatto visivo minimo
+  per gli effetti morbidi (plasma, flame, caleidoscopio). Default: **Media**.
+- L'animazione gira a ~30 fps e si **ferma** in modalità SVG (sfondo statico).
+- **Dithering** anti-banding e **tone-mapping filmico (ACES)** sugli effetti additivi:
+  gradienti puliti senza scalettature e highlight più ricchi, a costo trascurabile.
 
 ## Requisiti
 

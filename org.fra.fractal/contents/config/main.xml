@@ -11,7 +11,11 @@
         </entry>
         <entry name="Palette" type="Int">
             <label>Indice palette colori (0-4)</label>
-            <default>0</default>
+            <default>1</default>
+        </entry>
+        <entry name="Quality" type="Int">
+            <label>Qualità rendering: 0=Alta 1=Media 2=Bassa</label>
+            <default>1</default>
         </entry>
         <entry name="Speed" type="Double">
             <label>Velocità animazione</label>

@@ -24,6 +24,8 @@ vec3 palette(float t, float idx){
     if (i == 3) return pal(t, vec3(0.5), vec3(0.5), vec3(2.0, 1.0, 0.0), vec3(0.50, 0.20, 0.25));
     return pal(t, vec3(0.20, 0.50, 0.80), vec3(0.60, 0.30, 0.50), vec3(1.0), vec3(0.00, 0.20, 0.50));
 }
+vec3 aces(vec3 x){ return clamp((x * (2.51 * x + 0.03)) / (x * (2.43 * x + 0.59) + 0.14), 0.0, 1.0); }
+float hash12(vec2 p){ vec3 p3 = fract(vec3(p.xyx) * 0.1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }
 
 void main(){
     vec2 res = iResolution;
@@ -48,6 +50,7 @@ void main(){
     col += col * col * 0.6;
     col *= 1.0 - 0.35 * dot(uv, uv);
 
-    col = pow(clamp(col, 0.0, 1.0), vec3(0.8));
-    fragColor = vec4(col, 1.0) * qt_Opacity;
+    col = aces(col * 1.1);                  // tone-mapping filmico: highlight ricchi, niente clipping piatto
+    col += (hash12(fc) - 0.5) / 255.0;      // dither anti-banding
+    fragColor = vec4(clamp(col, 0.0, 1.0), 1.0) * qt_Opacity;
 }

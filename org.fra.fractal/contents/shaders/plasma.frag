@@ -37,6 +37,7 @@ float fbm(vec2 p){
     for (int i = 0; i < 5; i++){ s += a * vnoise(p); p = m * p; a *= 0.5; }
     return s;
 }
+float hash12(vec2 p){ vec3 p3 = fract(vec3(p.xyx) * 0.1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }
 
 void main(){
     vec2 res = iResolution;
@@ -55,5 +56,6 @@ void main(){
     col *= 0.55 + 0.65 * f;
 
     col = pow(clamp(col, 0.0, 1.0), vec3(0.85));
-    fragColor = vec4(col, 1.0) * qt_Opacity;
+    col += (hash12(fc) - 0.5) / 255.0;     // dither anti-banding
+    fragColor = vec4(clamp(col, 0.0, 1.0), 1.0) * qt_Opacity;
 }

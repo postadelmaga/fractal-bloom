@@ -9,6 +9,7 @@ Kirigami.FormLayout {
 
     property alias cfg_Mode: modeCombo.currentIndex
     property alias cfg_Palette: paletteCombo.currentIndex
+    property alias cfg_Quality: qualityCombo.currentIndex
     property alias cfg_Speed: speedSlider.value
     property alias cfg_Zoom: zoomSlider.value
     property string cfg_SvgPath: ""
@@ -35,6 +36,17 @@ Kirigami.FormLayout {
             i18n("Oro"),
             i18n("Fuoco"),
             i18n("Oceano")
+        ]
+    }
+
+    QQC2.ComboBox {
+        id: qualityCombo
+        Kirigami.FormData.label: i18n("Qualità:")
+        enabled: modeCombo.currentIndex < 4
+        model: [
+            i18n("Alta (risoluzione piena)"),
+            i18n("Media (75%)"),
+            i18n("Bassa (50%)")
         ]
     }
 
