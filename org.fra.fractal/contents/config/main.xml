@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name=""/>
+    <group name="General">
+        <entry name="Mode" type="Int">
+            <label>Modalità: 0=Julia 1=Plasma 2=Caleidoscopio 3=Flame 4=SVG</label>
+            <default>1</default>
+        </entry>
+        <entry name="Palette" type="Int">
+            <label>Indice palette colori (0-4)</label>
+            <default>0</default>
+        </entry>
+        <entry name="Speed" type="Double">
+            <label>Velocità animazione</label>
+            <default>1.0</default>
+        </entry>
+        <entry name="Zoom" type="Double">
+            <label>Zoom</label>
+            <default>1.0</default>
+        </entry>
+        <entry name="SvgPath" type="String">
+            <label>Percorso del file SVG (modalità SVG)</label>
+            <default></default>
+        </entry>
+    </group>
+</kcfg>

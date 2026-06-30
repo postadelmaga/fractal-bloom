@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Fra"
+            }
+        ],
+        "Category": "",
+        "Description": "Frattali colorati animati (Julia, plasma, caleidoscopio, flame) e sfondi vettoriali SVG",
+        "Id": "org.fra.fractal",
+        "License": "MIT",
+        "Name": "Fractal Bloom"
+    },
+    "KPackageStructure": "Plasma/Wallpaper",
+    "X-Plasma-API-Minimum-Version": "6.0"
+}
